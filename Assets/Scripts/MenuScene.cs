@@ -29,6 +29,6 @@ public class MenuScene : MonoBehaviour
     //Buttons
     public void onPlayclick()
     {
-        SceneManager.LoadScene("Level_1");
+        SceneManager.LoadScene("LevelSelect");
     }
 }
