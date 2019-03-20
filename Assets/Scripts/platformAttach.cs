@@ -5,17 +5,21 @@ using UnityEngine;
 public class platformAttach : MonoBehaviour
 {
     public GameObject Player;
+    public GameObject proxy;
 
     private void OnTriggerEnter(Collider other)
     {
         if(other.gameObject == Player)
         {
-            Player.transform.parent = other.transform;
+            proxy.transform.parent = transform;
+            Player.transform.parent = proxy.transform;
+            
         }
     }
 
     private void OnTriggerExit(Collider other)
     {
+        proxy.transform.parent = null;
         Player.transform.parent = null;
     }
 }

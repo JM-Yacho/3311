@@ -50,15 +50,15 @@ public class JumpMotor : MonoBehaviour
     // Update is called once per frame
     void FixedUpdate()
     {
-       
-            if(Input.touchCount > 0)
+
+        if (Input.touchCount > 0)
+        {
+            if (Input.GetTouch(0).phase == TouchPhase.Began && IsGrounded() && IsTap(Input.GetTouch(0)))
             {
-                if (Input.GetTouch(0).phase == TouchPhase.Began && IsGrounded() && IsTap(Input.GetTouch(0)))
-                {
                 player.AddForce(0, jumpForce, 0);
-                }
-                
             }
-        
+
+        }
+
     }
 }
