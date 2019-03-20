@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class fallOff : MonoBehaviour
+public class death : MonoBehaviour
 {
     public GameObject Player;
     private void OnTriggerEnter(Collider other)
