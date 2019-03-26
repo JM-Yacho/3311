@@ -6,11 +6,20 @@ public class Accelerometer : MonoBehaviour
 {
     public bool isflat = true;
     private Rigidbody rigid;
+    private Transform camTransform;
+
+    //Boost mechanic variables
+    public float boostSpeed = 5.0f;
+    public float boostCD = 5f;
+    private float lastBoost;
 
     // Start is called before the first frame update
     void Start()
     {
+        lastBoost = Time.time - boostCD;
+
         rigid = GetComponent<Rigidbody>();
+        camTransform = Camera.main.transform;
     }
 
     // Update is called once per frame
@@ -22,7 +31,19 @@ public class Accelerometer : MonoBehaviour
         {
             tilt = Quaternion.Euler(90, 0, 0) * tilt;
         }
+        //Rotate our direction vector with camera
+        Vector3 rotatedDir = camTransform.TransformDirection(tilt);
+        rotatedDir = new Vector3(rotatedDir.x, 0, rotatedDir.z);
+        rotatedDir = rotatedDir.normalized * tilt.magnitude;
 
-        rigid.AddForce(tilt);
+        rigid.AddForce(rotatedDir);
+    }
+    public void Boost()
+    {
+        if (Time.time - lastBoost > boostCD)
+        {
+            rigid.AddForce(rigid.velocity.normalized * boostSpeed, ForceMode.VelocityChange);
+        }
+
     }
 }
