@@ -9,7 +9,7 @@ public class JumpMotor : MonoBehaviour
     private Rigidbody player;
     private Collider playercollider;
     private float disttoground;
-    private float jumpForce = 15.0f;
+    public float jumpForce = 15.0f;
     private bool is_tap, moved;
 
     // Start is called before the first frame update
@@ -50,15 +50,15 @@ public class JumpMotor : MonoBehaviour
     // Update is called once per frame
     void FixedUpdate()
     {
-
-        if (Input.touchCount > 0)
-        {
-            if (Input.GetTouch(0).phase == TouchPhase.Began && IsGrounded() && IsTap(Input.GetTouch(0)))
+       
+            if(Input.touchCount > 0)
             {
+                if (Input.GetTouch(0).phase == TouchPhase.Began && IsGrounded() && IsTap(Input.GetTouch(0)))
+                {
                 player.AddForce(0, jumpForce, 0);
+                }
+                
             }
-
-        }
-
+        
     }
 }
