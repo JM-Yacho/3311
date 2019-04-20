@@ -17,7 +17,7 @@ public class CameraFollowPlayer : MonoBehaviour
     private float smoothspeed = 7.5f;
 
 
-
+    
     // Start is called before the first frame update
     void Start()
     {
@@ -26,7 +26,7 @@ public class CameraFollowPlayer : MonoBehaviour
 
     void Update()
     {
-
+        
         if (Input.GetMouseButtonDown(0) || Input.GetMouseButtonDown(1))
         {
             touchpos = Input.mousePosition;

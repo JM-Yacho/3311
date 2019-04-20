@@ -5,21 +5,18 @@ using UnityEngine.SceneManagement;
 
 public class LevelSelect : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
 
     //Buttons
     public void on1click()
     {
         SceneManager.LoadScene("Level_1");
+    }
+    public void on3click()
+    {
+        SceneManager.LoadScene("Level_3");
+    }
+    public void onBackclick()
+    {
+        SceneManager.LoadScene("MainMenu");
     }
 }

@@ -6,11 +6,13 @@ using UnityEngine.SceneManagement;
 public class death : MonoBehaviour
 {
     public GameObject Player;
+    public string level;
+
     private void OnTriggerEnter(Collider other)
     {
         if (other.gameObject == Player)
         {
-            SceneManager.LoadScene("Level_3");        
+            SceneManager.LoadScene(level);        
         }
     }
 }
