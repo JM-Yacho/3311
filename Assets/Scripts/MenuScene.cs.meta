@@ -3,7 +3,9 @@ guid: f311bccfa7bb5e94cbab6b8fa932affa
 MonoImporter:
   externalObjects: {}
   serializedVersion: 2
-  defaultReferences: []
+  defaultReferences:
+  - shopButtonPrefab: {instanceID: 0}
+  - shopButtonContainer: {instanceID: 0}
   executionOrder: 0
   icon: {instanceID: 0}
   userData: 

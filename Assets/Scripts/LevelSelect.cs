@@ -1,25 +1,51 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 using UnityEngine.SceneManagement;
+
+public class levelData
+{
+    public levelData(string levelname)
+    {
+        string data = PlayerPrefs.GetString(levelname);
+        if (data == "")
+            return;
+        string[] alldata = data.Split('&');
+        BestTime = float.Parse(alldata[0]);
+
+    }
+    public float BestTime { set;get;  }
+}
 
 public class LevelSelect : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+    public GameObject levelbutton;
+    public GameObject levelbuttonContainer;
 
-    // Update is called once per frame
-    void Update()
+    private void Start()
     {
-        
+        Sprite[] thumbnails = Resources.LoadAll<Sprite>("Levels");
+        foreach (Sprite thumbnail in thumbnails)
+        {
+            GameObject container = Instantiate(levelbutton) as GameObject;
+            container.transform.SetParent(levelbuttonContainer.transform, false);
+            container.transform.GetChild(0).GetComponent<Image>().sprite = thumbnail;
+            levelData level = new levelData(thumbnail.name);
+            container.transform.GetChild(1).GetChild(0).GetComponent<Text>().text = level.BestTime.ToString("f"); //Gets Best Time panel text component
+
+            string Scenename = thumbnail.name;
+            container.GetComponent<Button>().onClick.AddListener(() => LoadLevel(Scenename));
+        }
     }
 
     //Buttons
-    public void on1click()
+    private void LoadLevel(string Scenename)
     {
-        SceneManager.LoadScene("Level_1");
+        SceneManager.LoadScene(Scenename);
+    }
+    public void onBackclick()
+    {
+        SceneManager.LoadScene("MainMenu");
     }
 }
