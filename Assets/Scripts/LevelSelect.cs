@@ -31,6 +31,7 @@ public class LevelSelect : MonoBehaviour
             GameObject container = Instantiate(levelbutton) as GameObject;
             container.transform.SetParent(levelbuttonContainer.transform, false);
             container.transform.GetChild(0).GetComponent<Image>().sprite = thumbnail;
+            container.transform.GetChild(0).GetChild(0).GetComponent<Text>().text = thumbnail.name;
             levelData level = new levelData(thumbnail.name);
             container.transform.GetChild(1).GetChild(0).GetComponent<Text>().text = level.BestTime.ToString("f"); //Gets Best Time panel text component
 
