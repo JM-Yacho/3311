@@ -10,7 +10,7 @@ public class Accelerometer : MonoBehaviour
     
     //Boost mechanic variables
     public float boostSpeed = 5.0f;
-    public float boostCD = 5f;
+
     private float lastBoost;
 
     private Collider playercollider;
@@ -20,19 +20,18 @@ public class Accelerometer : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        lastBoost = Time.time - boostCD;
+        
 
         rigid = GetComponent<Rigidbody>();
         camTransform = Camera.main.transform;
 
-        playercollider = GetComponent<Collider>();
+        playercollider = GetComponent<Collider>(); //for jump
         //Getting distance from ground
         disttoground = playercollider.bounds.extents.y;
 
 
     }
 
-    // Update is called once per frame
     void FixedUpdate()
     {
         Vector3 tilt = Input.acceleration;
@@ -48,12 +47,16 @@ public class Accelerometer : MonoBehaviour
 
         rigid.AddForce(rotatedDir);
     }
+    /*
+     * 
+     * BUTTONS
+     * 
+     * 
+     */
     public void Boost()
     {
-        if (Time.time - lastBoost > boostCD)
-        {
+        
             rigid.AddForce(rigid.velocity.normalized * boostSpeed, ForceMode.VelocityChange);
-        }
         
     }
     public void Jump()
