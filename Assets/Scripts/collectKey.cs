@@ -15,7 +15,7 @@ public class collectKey : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.gameObject == Player)
+        if (collected == false && other.gameObject == Player)
         {
             collected = true;
             GetComponentInChildren<Renderer>().enabled = false;
