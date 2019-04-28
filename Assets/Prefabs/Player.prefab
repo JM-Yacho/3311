@@ -122,7 +122,5 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isflat: 1
-  rigid: {fileID: 4354226487999008091}
   boostSpeed: 5
-  boostCD: 5
-  jumpForce: 15
+  jumpForce: 30
