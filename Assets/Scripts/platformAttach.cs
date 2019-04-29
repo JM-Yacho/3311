@@ -13,6 +13,7 @@ public class platformAttach : MonoBehaviour
         {
             proxy.transform.parent = transform;
             Player.transform.parent = proxy.transform;
+            
         }
     }
 
