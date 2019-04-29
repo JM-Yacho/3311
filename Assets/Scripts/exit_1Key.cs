@@ -11,7 +11,7 @@ public class exit_1Key : MonoBehaviour
     {
         if (other.gameObject == Player && key.GetComponent<collectKey>().collected == true)
         {
-            SceneManager.LoadScene("LevelSelect");
+            LevelManager.Instance.Win();
         }
     }
 }

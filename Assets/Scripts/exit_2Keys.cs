@@ -12,7 +12,7 @@ public class exit_2Keys : MonoBehaviour
     {
         if (other.gameObject == Player && key1.GetComponent<collectKey>().collected == true && key2.GetComponent<collectKey>().collected == true)
         {
-            SceneManager.LoadScene("LevelSelect");
+            LevelManager.Instance.Win();
         }
     }
 }
