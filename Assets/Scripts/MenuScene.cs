@@ -6,9 +6,19 @@ using UnityEngine.UI;
 
 public class MenuScene : MonoBehaviour
 {
+    public GameObject instrucPopup;
+
+    private void Start()
+    {
+        instrucPopup.SetActive(false);
+    }
 
 
     //Buttons
+    public void Toggleinstr()
+    {
+        instrucPopup.SetActive(!instrucPopup.activeSelf);
+    }
     public void onPlayclick()
     {
         SceneManager.LoadScene("LevelSelect");
