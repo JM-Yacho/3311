@@ -11,6 +11,7 @@ public class exitLevel : MonoBehaviour
     {
         if (other.gameObject == Player && key.GetComponent<openDoor>().collected == true)
         {
+            LevelManager.Instance.Win();
             SceneManager.LoadScene("LevelSelect");
         }
     }
